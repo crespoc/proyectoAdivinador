@@ -1,0 +1,49 @@
+import java.util.Random;
+import java.util.Scanner;
+
+/**
+ *
+ * @author ruddycrespo
+ */
+public class JuegoAdivinar {
+
+    public static void main(String[] args) {
+        Random rand = new Random();
+        
+        //se genera un numero aleatorio entre el 1 y el 100
+        int numeroAdivinar = rand.nextInt(100) + 1;
+        // numero de intentos
+        int intentos = 10;
+        boolean gano = false;
+        
+        System.out.println("Juega a adivinar el numero");
+        System.out.println("Tenes " + intentos + " intentos para adivinar el numero.");
+        
+        // se ingresa el numero por pantalla
+        Scanner scanner = new Scanner(System.in);
+        
+        // iteracion de los numero ingresados
+        for(int i = 1; i <= intentos; i++) {
+            // indica por pantalla el numero de intento que debe ingresar.
+            System.out.println("Intento " + i + "\nIngresa tu numero: ");
+            int numeroDelUsuario = scanner.nextInt();
+            // los numero ingresados se van iterando en los condicionales.
+            if(numeroDelUsuario < numeroAdivinar) {
+                System.out.println("El numero a adivinar es mayor que el ingresado.");
+            } else if(numeroDelUsuario > numeroAdivinar) {
+                System.out.println("El numero a adivinar es menor que el ingresado.");
+            } else{
+                // en caso de adivinar el numero sale en pantalla el siguiente mensaje
+                System.out.println("Ganaste!! Felicitaciones, adivinaste el numero en " + intentos + " intentos");
+                gano = true;
+                break;
+            }
+            
+        }
+        
+        // en caso de no adivinar el numero en 10 intentos sale el siguiente mensaje
+        if (!gano){
+            System.out.println("Perdiste! El numero a adivinar era " + numeroAdivinar);
+        }
+    }
+}
